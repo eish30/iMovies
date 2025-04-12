@@ -1,0 +1,131 @@
+.loginContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  min-height: 100vh;
+  height: 100%;
+  width: 100%;
+  padding: 20px 10px;
+  
+
+  .formContainer {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.05), rgba(255, 255, 255, 0.02));
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    border: 1px solid rgba(6, 6, 6, 0.15);
+    padding: 32px 24px;
+    width: 90%;
+    max-width: 500px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+    z-index: 999;
+    color: white;
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 0;
+      span {
+        color: rgb(252, 239, 239);
+      }
+    }
+
+    .loginTitle {
+      font-size: 22px;
+      margin: 0;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
+    .inputContainer {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      label {
+        margin-bottom: 10px;
+        font-weight: 500;
+        color: white;
+        letter-spacing: 0.5px;
+      }
+
+      input {
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        height: 44px;
+        padding: 0 12px;
+        border-radius: 12px;
+        color: white;
+        background-color: rgba(255, 255, 255, 0.05);
+        font-weight: 500;
+        outline: none;
+        backdrop-filter: blur(4px);
+        transition: all 0.3s ease;
+
+        &:focus {
+          border: 2px solid crimson;
+          background-color: rgba(255, 255, 255, 0.08);
+        }
+
+        &::placeholder {
+          color: rgba(255, 255, 255, 0.6);
+          font-weight: 400;
+        }
+      }
+    }
+
+    .checkbox {
+      width: 100%;
+      display: flex;
+      align-items: center;
+
+      input {
+        height: 18px;
+        width: 18px;
+      }
+
+      label {
+        margin-left: 10px;
+        font-size: 14px;
+        color: white;
+      }
+    }
+
+    p {
+      font-size: 14px;
+      font-weight: 500;
+      color: white;
+
+      span {
+        margin-left: 10px;
+        color: rgb(218, 201, 205);
+        font-weight: 600;
+        font-size: 16px;
+        cursor: pointer;
+      }
+    }
+
+    button {
+      height: 42px;
+      width: 120px;
+      border: none;
+      font-size: 16px;
+      border-radius: 8px;
+      background: crimson;
+      color: white;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      box-shadow: 0 6px 18px rgba(220, 20, 60, 0.4);
+      cursor: pointer;
+      transition: background 0.3s ease;
+
+      &:hover {
+        background: darkred;
+      }
+    }
+  }
+}
