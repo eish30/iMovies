@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import AdminHeader from "../../components/adminHeader/AdminHeader";
 import dayjs from "dayjs";
 import { ToastContainer, toast } from "react-toastify";
@@ -8,7 +8,7 @@ import Loader from "../../components/loader/Loader";
 import { AiOutlineDelete } from "react-icons/ai";
 import useSWR from "swr";
 import { BiCameraMovie } from "react-icons/bi";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { render } from "../../host";
@@ -24,6 +24,9 @@ const Admin = () => {
     theme: "dark",
     closeOnClick: true,
   };
+
+  // Utility function to safely capitalize strings
+  const capitalize = (str) => (str ? str[0].toUpperCase() + str.slice(1) : "");
 
   const fetcher = async (url) => {
     try {
@@ -46,39 +49,34 @@ const Admin = () => {
     loading,
     data: showsData,
     mutate,
-  } = useSWR(`${render}/api/shows/getadminshows`, fetcher);
+  } = useSWR(`${render}/api/shows/getadminshows, fetcher`);
 
   useEffect(() => {
     if (!adminToken) {
       navigate("/admin/login");
     }
-  }, []);
+  }, [adminToken, navigate]);
 
-  showsData?.sort(function (a, b) {
+  // Sort showsData if available
+  showsData?.sort((a, b) => {
     // Concatenate date and time strings for comparison
-    var datetimeA = new Date(a.showdate + "T" + a.showtime + "Z");
-    var datetimeB = new Date(b.showdate + "T" + b.showtime + "Z");
+    const datetimeA = new Date(a.showdate + "T" + a.showtime + "Z");
+    const datetimeB = new Date(b.showdate + "T" + b.showtime + "Z");
 
     return datetimeA - datetimeB;
   });
 
   function convertTo12HourFormat(time24) {
     // Split the time string into hours and minutes
-    var [hours, minutes] = time24.split(":");
-
+    const [hoursStr, minutes] = time24.split(":");
     // Convert hours to integer
-    hours = parseInt(hours);
-
+    let hours = parseInt(hoursStr, 10);
     // Determine AM or PM
-    var meridiem = hours >= 12 ? "PM" : "AM";
-
+    const meridiem = hours >= 12 ? "PM" : "AM";
     // Convert hours to 12-hour format
     hours = hours % 12 || 12;
-
     // Format the time string in 12-hour format
-    var time12 = hours + ":" + minutes + " " + meridiem;
-
-    return time12;
+    return hours + ":" + minutes + " " + meridiem;
   }
 
   const handleDelete = async (showId, movieId) => {
@@ -110,12 +108,8 @@ const Admin = () => {
                 </h1>
                 <ul className="showsContainer">
                   {showsData?.map((s, i) => {
-                    const upperCaseTheatre =
-                      s.theatreName[0].toUpperCase() + s.theatreName.slice(1);
-
-                    const upperCaseMovie =
-                      s.movieName[0].toUpperCase() + s.movieName.slice(1);
-
+                    const upperCaseTheatre = capitalize(s.theatreName);
+                    const upperCaseMovie = capitalize(s.movieName);
                     return (
                       <li key={i}>
                         <BiCameraMovie />
@@ -136,7 +130,6 @@ const Admin = () => {
                             <span>Showtime:</span>
                             <p>{convertTo12HourFormat(s?.showtime)}</p>
                           </div>
-
                           <button
                             onClick={() => handleDelete(s.showId, s.movieId)}
                           >
