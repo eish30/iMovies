@@ -9,6 +9,8 @@ import "../style.scss";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { render } from "../../host";
+import loginBG from "../../assets/loginBG.jpg";
+
 
 const AdminRegister = () => {
   const [userData, setUserData] = useState({
@@ -93,6 +95,15 @@ const AdminRegister = () => {
     setShowPass((prev) => !prev);
   };
   return (
+    <div style={{ backgroundImage: `url(${loginBG})`, backgroundSize: "cover", backgroundRepeat: "no-repeat", minHeight: "100vh", position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backdropFilter: "blur(8px)", // Background blur
+    backgroundColor: "rgba(0, 0, 0, 0.4)", // Optional dim layer
+    zIndex: 1,
+}}>
     <div className="loginContainer">
       <form onSubmit={handleSubmit} className="formContainer">
         <h1>
@@ -162,14 +173,10 @@ const AdminRegister = () => {
           </Link>
         </p>
 
-         <p>
-                  Register as an
-                  <Link style={{ textDecoration: "none" }} to={"/register"}>
-                    <span>User</span>
-                  </Link>
-                </p>
+        
       </form>
       <ToastContainer />
+    </div>
     </div>
   );
 };

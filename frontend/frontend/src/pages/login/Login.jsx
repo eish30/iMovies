@@ -138,6 +138,12 @@ const Login = () => {
             <span>Register</span>
           </Link>
         </p>
+        <p>
+                  Login as an
+                  <Link style={{ textDecoration: "none" }} to={"/admin/login"}>
+                    <span>Admin</span>
+                  </Link>
+                </p>
       </form>
       <ToastContainer />
     </div>
