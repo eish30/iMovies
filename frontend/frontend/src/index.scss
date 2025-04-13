@@ -9,19 +9,19 @@
 }
 
 .dark {
-  --bg: #0f172a;
+  --bg: #2e0951;
   --textColor: #ddd;
-  --softBg: #1f273a;
+  --softBg: #430a69;
   --softTextColor: #a6a6a6;
-  --shadow: rgb(220, 20, 60) 10px 10px 16px;
+  --shadow: #57639d 10px 10px 16px;
 }
 
 .light {
-  --bg: white;
-  --textColor: black;
-  --softBg: #f0f0f0;
-  --softTextColor: #626262;
-  --shadow: rgb(220, 20, 60) 10px 10px 16px;
+  --bg: rgb(254, 254, 255);
+  --textColor: rgb(52, 11, 85);
+  --softBg: #c3aee6;
+  --softTextColor: #2c1151;
+  --shadow: rgb(52, 16, 181) 10px 10px 16px;
 }
 
 * {

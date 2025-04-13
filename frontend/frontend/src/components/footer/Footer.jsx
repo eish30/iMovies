@@ -20,10 +20,8 @@ const Footer = () => {
           <li className="menuItem">FAQ</li>
         </ul>
         <div className="infoText">
-          Experience the future of entertainment at your fingertips with
-          Streamify's intuitive interface, empowering users to navigate
-          effortlessly through a vast library of high-quality, on-demand
-          content.
+        iMovies © 2025
+        Your go-to platform for booking movie tickets, discovering new films, and exploring showtimes at your favorite theaters.
         </div>
         <div className="socialIcons">
           <span className="icon">
